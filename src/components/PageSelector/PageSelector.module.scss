@@ -1,0 +1,13 @@
+.PageSelector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &_btn {
+        margin: 3px;
+        margin-bottom: -1px;
+    }
+    &_nums {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+}

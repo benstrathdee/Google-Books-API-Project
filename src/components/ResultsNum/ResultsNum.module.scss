@@ -1,0 +1,10 @@
+.ResultsNum {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &_select {
+        font-size: large;
+        margin-left: 5px;
+        height: 25px;
+    }
+}

@@ -1,0 +1,9 @@
+.ResultContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    width: 90%;
+    background-color: black;
+    border: 2px solid black;
+    opacity: 0.8;
+    margin-top: 100px;
+}
