@@ -14,18 +14,25 @@ const Modal = ({ modalOp, showModal, content }) => {
 	return (
 		<div className={styles.Modal}>
 			<div className={styles.Modal_content}>
-				<div className={styles.Modal_header}>
-					<h3>{content[0]}</h3>
+				<div className={styles.Modal_thumbwrapper}>
+					<img
+						src={content[6]}
+						alt=""
+						className={styles.Modal_thumb}
+					/>
 				</div>
 				<div className={styles.Modal_body}>
-					<h5>{content[2]}</h5>
-					<h4>by {authorList}</h4>
-					<p>{content[3]}</p>
-					<p>{content[4]}</p>
-					<a href={content[5]}>Preview on Google Books</a>
+					<h3>{content[0]}</h3>
+					<h4>{content[2]}</h4>
+					<h5>by {authorList}</h5>
+					<p>Released: {content[3] ? content[3] : "--"}</p>
+					<p>{content[4] ? content[4] : "--"} pages</p>
+					<a href={content[5]}>View on Google Books</a>
 				</div>
 				<div className={styles.Modal_footer}>
-					<button onClick={modalOp}>Close</button>
+					<button className={styles.Modal_close} onClick={modalOp}>
+						Close
+					</button>
 				</div>
 			</div>
 		</div>

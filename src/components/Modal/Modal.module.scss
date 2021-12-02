@@ -1,21 +1,58 @@
 .Modal {
-    position: fixed;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0,0,0,0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    &_content {
-        width: 500px;
-        background-color: whitesmoke;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 10px;
-    }
-    z-index: 2;
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	&_content {
+		padding: 20px;
+		max-width: 750px;
+		background-color: whitesmoke;
+		border-radius: 20px;
+		display: grid;
+		grid-template-areas: "image body" "footer footer";
+		align-items: center;
+		padding: 20px;
+	}
+	&_thumbwrapper {
+		grid-area: image;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	&_thumb {
+		height: 300px;
+		border: 3px solid black;
+		border-radius: 10px;
+		box-shadow: 0px 10px 13px -7px black;
+	}
+	&_close {
+		background-color: slategray;
+		color: white;
+		border: none;
+		border-radius: 10px;
+		font-size: larger;
+		&:hover {
+			cursor: pointer;
+			box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 1);
+			transition: box-shadow 0.2s ease-in-out;
+			cursor: pointer;
+		}
+	}
+	&_body {
+		margin-left: 20px;
+		grid-area: body;
+	}
+	&_footer {
+		grid-area: footer;
+		margin-top: 15px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	z-index: 2;
 }
