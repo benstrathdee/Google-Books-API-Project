@@ -9,7 +9,7 @@ function App() {
 
 	const [booksList, setBooksList] = useState([]);
 	const [searchTerm, setSearchTerm] = useState("a");
-	const [searchTime, setSearchTime] = useState(false);
+	const [doSearch, setDoSearch] = useState(false);
 	const [maxResults, setMaxResults] = useState(10);
 	const [showModal, setShowModal] = useState(false);
 	const [modalContent, setModalContent] = useState([]);
@@ -23,11 +23,11 @@ function App() {
 		setBooksList(items);
 	};
 
-	const handleClick = () => {
-		setSearchTime(!searchTime);
+	const handleDoSearch = () => {
+		setDoSearch(!doSearch);
 	};
 
-	const handleSearch = (event) => {
+	const handleSearchTerm = (event) => {
 		setSearchTerm(event.target.value === "" ? "a" : event.target.value);
 	};
 
@@ -35,7 +35,7 @@ function App() {
 		setMaxResults(event.target.value);
 	};
 
-	const handleModal = () => {
+	const handleShowModal = () => {
 		setShowModal(!showModal);
 	};
 
@@ -45,22 +45,22 @@ function App() {
 
 	useEffect(() => {
 		getBooks(searchTerm, maxResults);
-	}, [searchTime, maxResults]);
+	}, [doSearch, maxResults]);
 
 	return (
 		<div className={styles.App}>
 			<Navbar
-				click={handleClick}
-				search={handleSearch}
+				click={handleDoSearch}
+				search={handleSearchTerm}
 				maxResults={handleResultNum}
 			/>
 			<ResultContainer
 				data={booksList}
-				modalOp={handleModal}
+				modalOp={handleShowModal}
 				modalContent={handleModalContent}
 			/>
 			<Modal
-				modalOp={handleModal}
+				modalOp={handleShowModal}
 				showModal={showModal}
 				content={modalContent}
 			/>
