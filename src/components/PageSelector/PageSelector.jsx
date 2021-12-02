@@ -1,17 +1,44 @@
-import styles from "./PageSelector.module.scss"
-import { faForward, faBackward, faFastForward, faFastBackward } from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import styles from "./PageSelector.module.scss";
 
-const PageSelector = () => {
-    return (
-        <div className={styles.PageSelector}>
-            <FontAwesomeIcon icon={faFastBackward} className={styles.PageSelector_btn}/>
-            <FontAwesomeIcon icon={faBackward} className={styles.PageSelector_btn}/>
-            <p className={styles.PageSelector_nums}>1 2 3 4 5</p>
-            <FontAwesomeIcon icon={faForward} className={styles.PageSelector_btn}/>
-            <FontAwesomeIcon icon={faFastForward} className={styles.PageSelector_btn}/>
-        </div>
-    )
-}
+const PageSelector = ({ pagesToList, handlePages }) => {
+	return (
+		<div className={styles.PageSelector}>
+			<button className={styles.btn} onClick={handlePages} value="start">
+				⮄
+			</button>
+			<button className={styles.btn} onClick={handlePages} value={"prev"}>
+				🠐
+			</button>
+			{pagesToList.map((pageNum, index) => {
+				return pageNum < 1 || pageNum > 40 ? null : index !== 2 ? (
+					<button
+						key={index}
+						className={styles.btn}
+						onClick={handlePages}
+						value={pageNum}
+					>
+						{pageNum}
+					</button>
+				) : (
+					<button
+						key={index}
+						className={styles.btn__underline}
+						onClick={handlePages}
+						value={pageNum}
+					>
+						{pageNum}
+					</button>
+				);
+			})}
+			<button className={styles.btn} onClick={handlePages} value="next">
+				⭢
+			</button>
+			{/* This repeatedly broke the page so I'm removing it for now lol */}
+			{/* <button className={styles.btn} onClick={handlePages} value="end">
+				⮆
+			</button> */}
+		</div>
+	);
+};
 
-export default PageSelector
+export default PageSelector;
