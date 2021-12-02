@@ -12,7 +12,7 @@ const Result = ({
 	modalContent,
 }) => {
 	const sendToModal = () => {
-		modalContent([title, authors, desc, release, pages, link]);
+		modalContent([title, authors, desc, release, pages, link, thumbnail]);
 		modalOp();
 	};
 
@@ -32,8 +32,10 @@ const Result = ({
 
 	return (
 		<div className={styles.ResultCard} onClick={sendToModal}>
-			<h2>{truncateString(title, 50, "...")}</h2>
-			<h6>{truncateString(authorList, 40, "...")}</h6>
+			<h2 className={styles.ResultCard_title}>
+				{truncateString(title, 50, "...")}
+			</h2>
+			<h5>{truncateString(authorList, 40, "...")}</h5>
 			<img src={thumbnail} alt="" className={styles.ResultCard_thumb} />
 		</div>
 	);
