@@ -2,11 +2,9 @@ import styles from "./ResultContainer.module.scss";
 import Result from "../../components/Result/Result";
 
 const ResultContainer = ({ data, modalOp, modalContent }) => {
-	return data === undefined ? (
-		<p className={styles.ResultContainer_blank}>No results found.</p>
-	) : (
+	return data === undefined ? null : (
 		<div className={styles.ResultContainer}>
-			{data.map((book, index) => {
+			{data.map((book) => {
 				const image =
 					book.volumeInfo.imageLinks === undefined
 						? "https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg"
@@ -15,14 +13,14 @@ const ResultContainer = ({ data, modalOp, modalContent }) => {
 				return (
 					<>
 						<Result
-							key={index}
+							key={book.id}
 							title={book.volumeInfo.title}
 							authors={book.volumeInfo.authors}
 							thumbnail={image}
 							desc={book.volumeInfo.subtitle}
 							release={book.volumeInfo.publishedDate}
 							pages={book.volumeInfo.pageCount}
-							link={book.volumeInfo.previewLink}
+							link={book.volumeInfo.infoLink}
 							modalOp={modalOp}
 							modalContent={modalContent}
 						/>
